@@ -7,6 +7,8 @@ import Homepage from './components/Homepage';
 import Favorites from './components/Favorites';
 import Details from './components/Details';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './components/styled';
 
 function App() {
     const dispatch = useDispatch();
@@ -16,20 +18,23 @@ function App() {
     }, []);
 
     return (
-        <Router>
-            <Navbar />
-            <Switch>
-                <Route path="/favorites">
-                    <Favorites />
-                </Route>
-                <Route path="/details/:id">
-                    <Details />
-                </Route>
-                <Route>
-                    <Homepage />
-                </Route>
-            </Switch>
-        </Router>
+        <ThemeProvider theme={{}}>
+            <GlobalStyles />
+            <Router>
+                <Navbar />
+                <Switch>
+                    <Route path="/favorites">
+                        <Favorites />
+                    </Route>
+                    <Route path="/details/:id">
+                        <Details />
+                    </Route>
+                    <Route>
+                        <Homepage />
+                    </Route>
+                </Switch>
+            </Router>
+        </ThemeProvider>
     );
 }
 
