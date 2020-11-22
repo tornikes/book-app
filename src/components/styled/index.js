@@ -1,12 +1,16 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-const theme = {
-    primaryText: '#000',
+export const theme = {
+    primaryBg: '#e8e8e8',
+    primaryText: '#222831',
+    hoverBg: '#f05454',
+    secondaryBg: '#30475e',
+    secondaryText: '#FFF',
+    bgDanger: '#d9534f',
+    bgSuccess: '#5cb85c'
 };
 
 export const GlobalStyles = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
-
     * {
         margin: 0;
         padding: 0;
@@ -21,6 +25,11 @@ export const GlobalStyles = createGlobalStyle`
     a {
         text-decoration: none;
     }
+
+    body {
+        background-color: ${props => props.theme.primaryBg};
+        color: ${props => props.theme.primaryText}
+    }
 `;
 
 
@@ -33,17 +42,17 @@ export const Container = styled.div`
 export const StyledNav = styled.nav`
     font-size: 1.5rem;
     font-weight: bold;
-    background-color: darkblue;
+    background-color: ${props => props.theme.secondaryBg};
     ${Container} {
         & ul {
             display: flex;
             & a {
-                color: white;
+                color: ${props => props.theme.secondaryText};
                 display: block;
                 padding: 12px 15px;
             
                 &:hover {
-                    background-color: palevioletred;
+                    background-color: ${props => props.theme.hoverBg};
                 }
             }
             @media (max-width: 400px) {
@@ -54,7 +63,6 @@ export const StyledNav = styled.nav`
 `;
 
 export const BookItems = styled.div`
-    background-color: beige;
     ${Container} {
         padding-top: 30px;
         & .items {
@@ -73,6 +81,8 @@ export const BookCard = styled.article`
     background-color: white;
     border-radius: 5px;
     padding: 5px;
+    transition: box-shadow 0.2s ease-out;
+
     h3 {
         font-size: 20px;
         margin-bottom: 10px;
@@ -83,6 +93,12 @@ export const BookCard = styled.article`
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+    &:hover {
+        -webkit-box-shadow: 0px 0px 33px -7px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 33px -7px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 33px -7px rgba(0,0,0,0.75);
     }
 `;
 
@@ -100,14 +116,14 @@ export const FavButton = styled.button`
     width: 90px;
     border: none;
     cursor: pointer;
-    background-color: ${props => props.isFavorited ? 'red' : 'green'};
+    background-color: ${props => props.isFavorited ? 
+        props.theme.bgDanger : props.theme.bgSuccess};
     &:active, &:focus {
         outline: none;
     }
 `;
 
 export const DetailsView = styled.div`
-    background-color: beige;
     ${Container} {
         padding-top: 30px;
         display: flex;

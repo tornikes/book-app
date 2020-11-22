@@ -21,7 +21,7 @@ export default function Ratings({ average = 0, total = 0 }) {
 
     return (
         <p>
-            {stars.map(star => <i className={`fa fa-${star}`}></i>)}
+            {stars.map((star, i) => <i key={i} className={`fa fa-${star}`}></i>)}
             {' - '}
             {total} {total === 1 ? 'Rating' : 'Ratings'}
         </p>

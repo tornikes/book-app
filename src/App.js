@@ -8,7 +8,7 @@ import Favorites from './components/Favorites';
 import Details from './components/Details';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from './components/styled';
+import { GlobalStyles, theme } from './components/styled';
 
 function App() {
     const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function App() {
     }, []);
 
     return (
-        <ThemeProvider theme={{}}>
+        <ThemeProvider theme={theme}>
             <GlobalStyles />
             <Router>
                 <Navbar />

@@ -11,9 +11,16 @@ export default function Favorites() {
         <BookItems>
             <Container>
                 <h1>Favorite Books</h1>
-                <div className="items">
-                    {favs.map(book => <Book key={book.id} {...book} />)}
-                </div>
+                {
+                    favs.length > 0 ? 
+                    <div className="items">
+                        {favs.map(book => <Book key={book.id} {...book} />)}
+                    </div>
+                    : 
+                    <h3 style={{marginTop: '30px'}}>
+                        You have not added books to your favorites list.
+                    </h3>
+                }
             </Container>
         </BookItems>
     );
