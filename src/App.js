@@ -15,7 +15,7 @@ function App() {
 
     useEffect(() => {
         dispatch(initializeBooks());
-    }, []);
+    }, [dispatch]);
 
     return (
         <ThemeProvider theme={theme}>
